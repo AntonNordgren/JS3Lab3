@@ -18,6 +18,31 @@ body {
   background-color: yellow;
 }
 
+.productDiv {
+  display: block;
+  width: 25%;
+  text-align: left;
+  background-color: white;
+  border: solid black 1px;
+  padding-left: 50px;
+  padding-top: 50px;
+}
+
+.buyButton {
+  width: 100px;
+  height: 60px;
+  font-size: 2em;
+  background-color: red;
+  color: white;
+}
+
+.buttonAndPriceDiv {
+  position: relative;
+  text-align: right;
+  bottom: 40px;
+  padding-right: 20px;
+}
+
 .footer {
   background-color: green;
   width: 100%;

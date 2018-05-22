@@ -6,10 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import rootReducer from './reducers/reducer.js';
+import dataReducer from './reducers/reducer.js';
 
 let initialState = {
-    test: 100, 
     product: [
         {
             name: "Cola",
@@ -24,7 +23,7 @@ let initialState = {
     ]
 };
 
-const store = createStore(rootReducer, initialState);
+const store = createStore(dataReducer, initialState);
 
 ReactDOM.render((
     <Provider store={store}>
