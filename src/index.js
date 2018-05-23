@@ -12,13 +12,15 @@ let initialState = {
     product: [
         {
             name: "Cola",
-            price: 13.37,
-            img: 'https://images-na.ssl-images-amazon.com/images/I/81mEIp4PMBL._SL1500_.jpg'
+            price: 10,
+            img: 'https://images-na.ssl-images-amazon.com/images/I/81mEIp4PMBL._SL1500_.jpg',
+            quantity: 14
         },
         {
             name: "Sprite",
-            price: 13.39,
-            img: 'https://officedepot.scene7.com/is/image/officedepot/208255_p?$OD%2DLarge$&wid=450&hei=450'
+            price: 10,
+            img: 'https://officedepot.scene7.com/is/image/officedepot/208255_p?$OD%2DLarge$&wid=450&hei=450',
+            quantity: 10
         }
     ]
 };

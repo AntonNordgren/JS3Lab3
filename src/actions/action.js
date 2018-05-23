@@ -5,4 +5,11 @@ let actionGetProducts = () => {
     }
 }
 
-export { actionGetProducts };
+let addProductToCart = () => {
+    console.log("Hejsan");
+    return {
+        type: 'ADD_TO_CART'
+    }
+}
+
+export { actionGetProducts, addProductToCart };

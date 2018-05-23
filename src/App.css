@@ -2,49 +2,61 @@
 *{
   padding: 0;
   margin: 0;
+  outline: none;
 }
-
 body {
-  background-color: blue;
+  background-color: #ddeac5;
 }
 
 .navBar {
   width: 100%;
-  height: 100px;
-  background-color: red;
+  height: 12.5vh;
+  background-color: #381502;
+  color: white;
 }
 
 .content {
-  background-color: yellow;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  min-height: 75vh;
 }
 
 .productDiv {
-  display: block;
-  width: 25%;
+  margin: 5px;
+  height: 350px;
   text-align: left;
   background-color: white;
-  border: solid black 1px;
   padding-left: 50px;
   padding-top: 50px;
+  border: solid black 1px;
 }
 
 .buyButton {
-  width: 100px;
-  height: 60px;
-  font-size: 2em;
-  background-color: red;
+  width: 120px;
+  height: 40px;
+  font-size: 1.5em;
+  background-color: #cc2a0e;
   color: white;
+  border: solid #cc2a0e;
+  transition: 1s;
+}
+
+.buyButton:hover {
+  transition: .5s;
+  background-color: #ed553b;
+  border: solid #ed553b;
 }
 
 .buttonAndPriceDiv {
   position: relative;
   text-align: right;
-  bottom: 40px;
-  padding-right: 20px;
+  bottom: 60px;
+  padding-right: 30px;
 }
 
 .footer {
-  background-color: green;
+  background-color: #381502;
+  color: white;
   width: 100%;
-  height: 100px;
+  height: 12.5vh;
 }
