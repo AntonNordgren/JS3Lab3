@@ -12,4 +12,10 @@ let addProductToCart = () => {
     }
 }
 
-export { actionGetProducts, addProductToCart };
+let changeView = () => {
+    return {
+        type: 'CHANGE_VIEW'
+    }
+}
+
+export { changeView };

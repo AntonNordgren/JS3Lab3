@@ -1,15 +1,28 @@
 
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
-let dataReducer = (state=[], action) => {
-	switch( action.type ) {
+let productsReducer = (state = [], action) => {
+	switch (action.type) {
+		default:
+			return state;
+	}
+}
+
+let changeViewReducer = (state = {}, action) => {
+	switch (action.type) {
+		case 'CHANGE_VIEW':
+			if (state == 'products')
+				return state = 'cart'
+			else if (state == 'cart')
+				return state = 'products'
 		default:
 			return state;
 	}
 }
 
 let rootReducer = combineReducers({
-    products: dataReducer
+	products: productsReducer,
+	view: changeViewReducer
 });
 
-export default dataReducer;
+export default rootReducer;

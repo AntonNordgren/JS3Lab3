@@ -15,6 +15,16 @@ body {
   color: white;
 }
 
+.cartIcon {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 20px;
+
+  width: 50px;
+  height: 50px;
+}
+
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -22,13 +32,13 @@ body {
 }
 
 .productDiv {
-  margin: 5px;
-  height: 350px;
+  position: relative;
   text-align: left;
   background-color: white;
-  padding-left: 50px;
-  padding-top: 50px;
   border: solid black 1px;
+  height: 250px;
+  width: 250px;
+  margin: 10px;
 }
 
 .buyButton {
