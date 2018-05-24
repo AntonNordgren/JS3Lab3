@@ -13,32 +13,7 @@ let initialState = {
     products: [
         {
             name: "Cola",
-            price: 10,
-            img: 'https://images-na.ssl-images-amazon.com/images/I/81mEIp4PMBL._SL1500_.jpg'
-        },
-        {
-            name: "Sprite",
-            price: 10,
-            img: 'https://officedepot.scene7.com/is/image/officedepot/208255_p?$OD%2DLarge$&wid=450&hei=450'
-        },
-        {
-            name: "Cola",
-            price: 10,
-            img: 'https://images-na.ssl-images-amazon.com/images/I/81mEIp4PMBL._SL1500_.jpg'
-        },
-        {
-            name: "Sprite",
-            price: 10,
-            img: 'https://officedepot.scene7.com/is/image/officedepot/208255_p?$OD%2DLarge$&wid=450&hei=450'
-        },
-        {
-            name: "Sprite",
-            price: 10,
-            img: 'https://officedepot.scene7.com/is/image/officedepot/208255_p?$OD%2DLarge$&wid=450&hei=450'
-        },
-        {
-            name: "Cola",
-            price: 10,
+            price: 15,
             img: 'https://images-na.ssl-images-amazon.com/images/I/81mEIp4PMBL._SL1500_.jpg'
         },
         {
@@ -47,6 +22,8 @@ let initialState = {
             img: 'https://officedepot.scene7.com/is/image/officedepot/208255_p?$OD%2DLarge$&wid=450&hei=450'
         }
     ],
+    totalPrice: 0,
+    cartList: []
 };
 
 const store = createStore(rootReducer, initialState);

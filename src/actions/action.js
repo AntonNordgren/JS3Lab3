@@ -5,10 +5,13 @@ let actionGetProducts = () => {
     }
 }
 
-let addProductToCart = () => {
-    console.log("Hejsan");
+let addProductToCart = (itemName, itemPrice) => {
     return {
-        type: 'ADD_TO_CART'
+        type: 'ADD_TO_CART',
+        payload: {
+            name: itemName,
+            price: itemPrice
+        }
     }
 }
 
@@ -18,4 +21,4 @@ let changeView = () => {
     }
 }
 
-export { changeView };
+export { changeView, addProductToCart };

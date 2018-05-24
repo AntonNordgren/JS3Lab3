@@ -1,20 +1,38 @@
 
 import { combineReducers } from 'redux';
 
-let productsReducer = (state = [], action) => {
+const productsReducer = (state = [], action) => {
 	switch (action.type) {
 		default:
 			return state;
 	}
 }
 
-let changeViewReducer = (state = {}, action) => {
+const changeViewReducer = (state = {}, action) => {
 	switch (action.type) {
 		case 'CHANGE_VIEW':
-			if (state == 'products')
+			if (state === 'products')
 				return state = 'cart'
-			else if (state == 'cart')
+			else if (state === 'cart')
 				return state = 'products'
+		default:
+			return state;
+	}
+}
+
+const priceReducer = (state={}, action) => {
+	switch( action.type ) {
+		case 'ADD_TO_CART':
+			return state + action.payload.price;
+		default:
+			return state;
+	}
+}
+
+const cartListReducer = (state=[], action) => {
+	switch ( action.type ) {
+		case 'ADD_TO_CART':
+			return [...state, action.payload.name];
 		default:
 			return state;
 	}
@@ -22,7 +40,9 @@ let changeViewReducer = (state = {}, action) => {
 
 let rootReducer = combineReducers({
 	products: productsReducer,
-	view: changeViewReducer
+	view: changeViewReducer,
+	totalPrice: priceReducer,
+	cartList: cartListReducer
 });
 
 export default rootReducer;
