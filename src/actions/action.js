@@ -1,16 +1,11 @@
 
-let actionGetProducts = () => {
+let modifyCart = (itemName, itemPrice, itemQuantity) => {
     return {
-        type: 'GET_PRODUCTS'
-    }
-}
-
-let addProductToCart = (itemName, itemPrice) => {
-    return {
-        type: 'ADD_TO_CART',
+        type: 'MODIFY_CART',
         payload: {
             name: itemName,
-            price: itemPrice
+            price: itemPrice,
+            quantity: itemQuantity
         }
     }
 }
@@ -21,4 +16,4 @@ let changeView = () => {
     }
 }
 
-export { changeView, addProductToCart };
+export { changeView, modifyCart };

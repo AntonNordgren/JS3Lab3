@@ -15,34 +15,59 @@ const changeViewReducer = (state = {}, action) => {
 				return state = 'cart'
 			else if (state === 'cart')
 				return state = 'products'
+			break;
 		default:
 			return state;
 	}
 }
 
-const priceReducer = (state={}, action) => {
-	switch( action.type ) {
-		case 'ADD_TO_CART':
-			return state + action.payload.price;
+const priceReducer = (state = {}, action) => {
+	switch (action.type) {
+		case 'MODIFY_CART':
+			return state + action.payload.price * action.payload.quantity;
 		default:
 			return state;
 	}
 }
 
-const cartListReducer = (state=[], action) => {
-	switch ( action.type ) {
-		case 'ADD_TO_CART':
-			return [...state, action.payload.name];
+const cartListReducer = (state = [], action) => {
+	console.log(action)
+	let indexOf = () => {
+		for (let i = 0; i < state.length; i++) {
+			if (state[i].name === action.payload.name) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	switch (action.type) {
+		case 'MODIFY_CART':
+			let index = indexOf();
+			if (index === -1)
+				return [...state, action.payload];
+			else {
+				let newState = Object.assign({}, state[index]);
+				newState.quantity += action.payload.quantity;
+				if(newState.quantity === 0) {
+					return state.filter( x => x !== state[index]);
+				}
+				else 
+					return state.map(x => x === state[index] ? newState : x);
+			}
+
 		default:
 			return state;
 	}
+
 }
 
 let rootReducer = combineReducers({
 	products: productsReducer,
 	view: changeViewReducer,
 	totalPrice: priceReducer,
-	cartList: cartListReducer
+	cartList: cartListReducer,
+
 });
 
 export default rootReducer;
