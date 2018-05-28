@@ -9,12 +9,10 @@ const productsReducer = (state = [], action) => {
 }
 
 const changeViewReducer = (state = {}, action) => {
+	console.log(action);
 	switch (action.type) {
 		case 'CHANGE_VIEW':
-			if (state === 'products')
-				return state = 'cart'
-			else if (state === 'cart')
-				return state = 'products'
+			return state = action.view;
 			break;
 		default:
 			return state;

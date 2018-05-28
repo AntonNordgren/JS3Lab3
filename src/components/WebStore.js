@@ -16,7 +16,7 @@ class WebStore extends Component {
             const productsList = this.props.products.map(x => (
                 <div key={x.name} className="productDiv">
                     <h1>{x.name}</h1>
-                    <img  alt={x.name} src={x.img} width="100px" height="230px" />
+                    <img className="productImg" alt={x.name} src={x.img} width="100px" height="230px" />
                     <div className="buttonAndPriceDiv">
                         <h2>{x.price.toFixed(2)} Kr</h2>
                         <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, 1))} className="buyButton">Köp</button>
@@ -33,19 +33,41 @@ class WebStore extends Component {
         // Cart View
         else if (this.props.view === "cart") {
             console.log(this.props.cartList);
-            const cartList = this.props.cartList.map( x => (
-                <div key={x.name}>
+            const cartList = this.props.cartList.map(x => (
+                <div className="cartItem" key={x.name}>
                     {x.name} {x.quantity + "st"}
-                    <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, 1))}>+</button>
-                    <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, -1))}>-</button>
-                    <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, -x.quantity))}>Ta Bort</button>
+                    <div className="cartItemButtonDiv">
+                        <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, 1))}>+</button>
+                        <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, -1))}>-</button>
+                        <button onClick={event => this.props.dispatch(modifyCart(x.name, x.price, -x.quantity))}>Ta Bort</button>
+                    </div>
                 </div>
             ));
 
             currentContent = <div>
                 <div className="cartContent">
-                    Summa:  {this.props.totalPrice.toFixed(2)} kr
                     {cartList}
+                    <div className="sumText">
+                        Summa:  {this.props.totalPrice.toFixed(2)} kr
+                    </div>
+                </div>
+            </div>
+        }
+
+        // History View
+        else if (this.props.view === "history") {
+            currentContent = <div>
+                <div className="historyContent">
+                    History
+                </div>
+            </div>
+        }
+
+        // Admin view
+        else if (this.props.view === "admin") {
+            currentContent = <div>
+                <div className="adminContent">
+                    Admin
                 </div>
             </div>
         }
@@ -53,10 +75,15 @@ class WebStore extends Component {
         return (
             <div>
                 <div className="navBar">
-                    <img onClick={event => this.props.dispatch(changeView())}
+                    <div className="adminAndHistoryButtons">
+                        <button onClick={event => this.props.dispatch(changeView("products"))}>Products</button>
+                        <button onClick={event => this.props.dispatch(changeView("history"))}>History</button>
+                        <button onClick={event => this.props.dispatch(changeView("admin"))}>Admin</button>
+                    </div>
+                    <img onClick={event => this.props.dispatch(changeView("cart"))}
                         src="https://www.iconsdb.com/icons/preview/white/cart-44-xxl.png"
                         className="cartIcon"
-                        alt="cartIcon"/>
+                        alt="cartIcon" />
                 </div>
                 <div className="content">
                     {currentContent}

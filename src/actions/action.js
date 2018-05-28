@@ -10,9 +10,10 @@ let modifyCart = (itemName, itemPrice, itemQuantity) => {
     }
 }
 
-let changeView = () => {
+let changeView = (view) => {
     return {
-        type: 'CHANGE_VIEW'
+        type: 'CHANGE_VIEW',
+        view: view
     }
 }
 
