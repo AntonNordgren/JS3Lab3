@@ -2,14 +2,30 @@
 import { combineReducers } from 'redux';
 
 const productsReducer = (state = [], action) => {
+	console.log(state);
+	console.log(action);
+
+	let indexOf = () => {
+		for (let i = 0; i < state.length; i++) {
+			if (state[i].name === action.name) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	switch (action.type) {
+		case 'ADD_NEW_PRODUCT':
+			return [...state, action.payload];
+		case 'DELETE_EXISTING_PRODUCT':
+			let index = indexOf(state);
+			return state.filter( x => x !== state[index]);
 		default:
 			return state;
 	}
 }
 
 const changeViewReducer = (state = {}, action) => {
-	console.log(action);
 	switch (action.type) {
 		case 'CHANGE_VIEW':
 			return state = action.view;
@@ -29,7 +45,6 @@ const priceReducer = (state = {}, action) => {
 }
 
 const cartListReducer = (state = [], action) => {
-	console.log(action)
 	let indexOf = () => {
 		for (let i = 0; i < state.length; i++) {
 			if (state[i].name === action.payload.name) {

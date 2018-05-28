@@ -22,7 +22,7 @@ body {
 
 .adminAndHistoryButtons {
   position: relative;
-  top: 15px;
+  top: 25px;
   width: 50px;
   left: 10px;
 }
@@ -31,6 +31,15 @@ body {
   width: 100px;
   background-color: #f98989;
   color: white;
+}
+
+.adminContent {
+}
+
+.addNewProduct {
+  position: relative;
+  text-align: center;
+  margin: auto;
 }
 
 .cartIcon {
@@ -76,6 +85,33 @@ body {
   color: #381502;
   border-radius: 10px;
   text-align: center;
+}
+
+.productListDivs {
+  position: relative;
+  background-color: #f98989;
+  margin: auto;
+  color: #381502;
+  padding: 20px;
+  border: solid black 1px;
+  text-align: left;
+  font-size: 1.5em;
+  top: 20px;
+  width: 50%;
+}
+
+.editButtonsDiv {
+  position: absolute;
+  top: 20px;
+  width: 1px;
+  right: 140px;
+}
+
+.editButtonsDiv button {
+  background-color: #381502;
+  color: white;
+  width: 100px;
+  padding: 10px;
 }
 
 .productImg {
@@ -137,6 +173,7 @@ body {
 .footer {
   position: relative;
   top: 12.5vh;
+  top: 200px;
   background-color: #7a0808;
   color: white;
   width: 100%;

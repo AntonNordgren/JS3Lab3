@@ -2,11 +2,38 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { changeView, modifyCart } from '../actions/action.js';
+import { changeView, modifyCart, addNewProduct, editExistingProduct, deleteExistingProduct } from '../actions/action.js';
 
 import { connect } from 'react-redux';
 
 class WebStore extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            nameInput: "",
+            priceInput: undefined,
+            imgInput: ""
+        }
+    }
+    
+    nameOnChange = event => {
+        this.setState({
+            nameInput: event.target.value     
+        });
+    }
+
+    priceOnChange = event => {
+        this.setState({
+            priceInput: event.target.value     
+        });
+    }
+
+    imgOnChange = event => {
+        this.setState({
+            imgInput: event.target.value     
+        });
+    }
+
     render() {
 
         let currentContent;
@@ -65,9 +92,35 @@ class WebStore extends Component {
 
         // Admin view
         else if (this.props.view === "admin") {
+
+            let productList = this.props.products.map( x => (
+                <div key={x.name} className="productListDivs">
+                    <div>
+                        namn: {x.name}
+                    </div>
+                    <div>
+                        pris: {x.price}
+                    </div>
+                    <div> 
+                        url: {x.img}
+                    </div>
+                    <div className="editButtonsDiv">
+                        <button onClick={event => this.props.dispatch(editExistingProduct())}>Ändra</button>
+                        <button onClick={event => this.props.dispatch(deleteExistingProduct(x.name))}>Ta Bort</button>
+                    </div>
+                </div>
+            ));
+
             currentContent = <div>
                 <div className="adminContent">
-                    Admin
+                    <div className="addNewProduct">
+                        <h1>Lägg till ny produkt</h1>
+                        <input onChange={this.nameOnChange} type="text" placeholder="Namn" />
+                        <input onChange={this.priceOnChange} type="text" placeholder="Pris" />
+                        <input onChange={this.imgOnChange} type="text" placeholder="Bild(url)" />
+                        <button onClick={event => this.props.dispatch(addNewProduct(this.state.nameInput, parseInt(this.state.priceInput), this.state.imgInput))}>Lägg Till</button>
+                    </div>
+                    {productList}
                 </div>
             </div>
         }
@@ -76,8 +129,8 @@ class WebStore extends Component {
             <div>
                 <div className="navBar">
                     <div className="adminAndHistoryButtons">
-                        <button onClick={event => this.props.dispatch(changeView("products"))}>Products</button>
-                        <button onClick={event => this.props.dispatch(changeView("history"))}>History</button>
+                        <button onClick={event => this.props.dispatch(changeView("products"))}>Produkter</button>
+                        <button onClick={event => this.props.dispatch(changeView("history"))}>Historik</button>
                         <button onClick={event => this.props.dispatch(changeView("admin"))}>Admin</button>
                     </div>
                     <img onClick={event => this.props.dispatch(changeView("cart"))}

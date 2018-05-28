@@ -17,4 +17,28 @@ let changeView = (view) => {
     }
 }
 
-export { changeView, modifyCart };
+let addNewProduct = (name, price, img) => {
+    return {
+        type: 'ADD_NEW_PRODUCT',
+        payload: {
+            name: name,
+            price: price,
+            img: img
+        }
+    }
+}
+
+let editExistingProduct = () => {
+    return {
+        type: 'EDIT_EXISTING_PRODUCT'
+    }
+}
+
+let deleteExistingProduct = (name) => {
+    return {
+        type: 'DELETE_EXISTING_PRODUCT',
+        name: name
+    }
+}
+
+export { changeView, modifyCart, addNewProduct, editExistingProduct, deleteExistingProduct };
