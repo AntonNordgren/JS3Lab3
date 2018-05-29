@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { changeView, modifyCart, addNewProduct, editExistingProduct, deleteExistingProduct } from '../actions/action.js';
+import { changeView, modifyCart, addNewProduct, deleteExistingProduct } from '../actions/action.js';
 
 import { connect } from 'react-redux';
 
@@ -59,7 +59,6 @@ class WebStore extends Component {
         }
         // Cart View
         else if (this.props.view === "cart") {
-            console.log(this.props.cartList);
             const cartList = this.props.cartList.map(x => (
                 <div className="cartItem" key={x.name}>
                     {x.name} {x.quantity + "st"}
@@ -83,9 +82,14 @@ class WebStore extends Component {
 
         // History View
         else if (this.props.view === "history") {
+            const historyList = this.props.historyList.map(x => (
+                <div className="historyItem">
+                    {x.type}
+                </div>
+            ));
             currentContent = <div>
                 <div className="historyContent">
-                    History
+                    {historyList}
                 </div>
             </div>
         }
@@ -105,7 +109,6 @@ class WebStore extends Component {
                         url: {x.img}
                     </div>
                     <div className="editButtonsDiv">
-                        <button onClick={event => this.props.dispatch(editExistingProduct())}>Ändra</button>
                         <button onClick={event => this.props.dispatch(deleteExistingProduct(x.name))}>Ta Bort</button>
                     </div>
                 </div>
@@ -152,7 +155,8 @@ let mapStateToProps = state => {
         products: state.products,
         view: state.view,
         totalPrice: state.totalPrice,
-        cartList: state.cartList
+        cartList: state.cartList,
+        historyList: state.historyList
     };
 }
 

@@ -33,9 +33,6 @@ body {
   color: white;
 }
 
-.adminContent {
-}
-
 .addNewProduct {
   position: relative;
   text-align: center;
@@ -53,25 +50,25 @@ body {
 .productContent {
   display: flex;
   flex-wrap: wrap;
-  min-height: 57.5vh;
+  min-height: 49.5vh;
 }
 
 .cartContent {
   position: relative;
   top: 12.5vh;
-  min-height: 57.5vh;
+  min-height: 49.5vh;
 }
 
 .historyContent {
   position: relative;
   top: 12.5vh;
-  min-height: 57.5vh;
+  min-height: 49.5vh;
 }
 
 .adminContent {
   position: relative;
   top: 12.5vh;
-  min-height: 57.5vh;
+  min-height: 49.5vh;
 }
 
 .productDiv {
@@ -87,11 +84,23 @@ body {
   text-align: center;
 }
 
+.historyItem {
+  position: relative;
+  background-color: #f98989;
+  color: white;
+  width: 50%;
+  left: 25%;
+  right: 25%;
+  padding: 20px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
 .productListDivs {
   position: relative;
   background-color: #f98989;
   margin: auto;
-  color: #381502;
+  color: white;
   padding: 20px;
   border: solid black 1px;
   text-align: left;
@@ -102,7 +111,7 @@ body {
 
 .editButtonsDiv {
   position: absolute;
-  top: 20px;
+  top: 45px;
   width: 1px;
   right: 140px;
 }
@@ -145,7 +154,7 @@ body {
 
 .cartItem {
   position: relative;
-  background-color: #ed553b;
+  background-color: #f98989;
   color: white;
   width: 50%;
   left: 25%;
@@ -157,6 +166,7 @@ body {
 .sumText {
   font-size: 2em;
   color: #7a0808;
+  text-align: center;
 }
 
 .cartItemButtonDiv {
@@ -166,8 +176,25 @@ body {
   color: white;
 }
 
+.cartItemButtonDiv button {
+  background-color: #f98989;
+  color: white;
+  padding: 5px;
+  width: 60px;
+  background-color: #cc2a0e;
+  color: white;
+  border: solid #cc2a0e;
+  transition: 1s;
+}
+
+.cartItemButtonDiv button:hover {
+  transition: .5s;
+  background-color: #381502;
+  border: solid #381502;
+}
+
 .cartContent {
-  text-align: center;
+  text-align: left;
 }
 
 .footer {

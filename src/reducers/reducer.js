@@ -2,12 +2,9 @@
 import { combineReducers } from 'redux';
 
 const productsReducer = (state = [], action) => {
-	console.log(state);
-	console.log(action);
-
-	let indexOf = () => {
+	let indexOf = (name) => {
 		for (let i = 0; i < state.length; i++) {
-			if (state[i].name === action.name) {
+			if (state[i].name === name) {
 				return i;
 			}
 		}
@@ -16,9 +13,12 @@ const productsReducer = (state = [], action) => {
 
 	switch (action.type) {
 		case 'ADD_NEW_PRODUCT':
-			return [...state, action.payload];
+			if(indexOf(action.payload.name) === -1) {
+				return [...state, action.payload];
+			}
+			return state;
 		case 'DELETE_EXISTING_PRODUCT':
-			let index = indexOf(state);
+			let index = indexOf(action.name);
 			return state.filter( x => x !== state[index]);
 		default:
 			return state;
@@ -45,6 +45,7 @@ const priceReducer = (state = {}, action) => {
 }
 
 const cartListReducer = (state = [], action) => {
+	console.log(state);
 	let indexOf = () => {
 		for (let i = 0; i < state.length; i++) {
 			if (state[i].name === action.payload.name) {
@@ -57,14 +58,13 @@ const cartListReducer = (state = [], action) => {
 	switch (action.type) {
 		case 'MODIFY_CART':
 			let index = indexOf();
-			if (index === -1)
+			if (index === -1) 
 				return [...state, action.payload];
 			else {
 				let newState = Object.assign({}, state[index]);
 				newState.quantity += action.payload.quantity;
-				if(newState.quantity === 0) {
+				if(newState.quantity === 0)
 					return state.filter( x => x !== state[index]);
-				}
 				else 
 					return state.map(x => x === state[index] ? newState : x);
 			}
@@ -72,7 +72,10 @@ const cartListReducer = (state = [], action) => {
 		default:
 			return state;
 	}
+}
 
+const historyReducer = (state = [], action) => {
+	return [...state, action];
 }
 
 let rootReducer = combineReducers({
@@ -80,7 +83,7 @@ let rootReducer = combineReducers({
 	view: changeViewReducer,
 	totalPrice: priceReducer,
 	cartList: cartListReducer,
-
+	historyList: historyReducer
 });
 
 export default rootReducer;

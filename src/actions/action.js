@@ -28,12 +28,6 @@ let addNewProduct = (name, price, img) => {
     }
 }
 
-let editExistingProduct = () => {
-    return {
-        type: 'EDIT_EXISTING_PRODUCT'
-    }
-}
-
 let deleteExistingProduct = (name) => {
     return {
         type: 'DELETE_EXISTING_PRODUCT',
@@ -41,4 +35,4 @@ let deleteExistingProduct = (name) => {
     }
 }
 
-export { changeView, modifyCart, addNewProduct, editExistingProduct, deleteExistingProduct };
+export { changeView, modifyCart, addNewProduct, deleteExistingProduct };

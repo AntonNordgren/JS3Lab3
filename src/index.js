@@ -78,7 +78,8 @@ let initialState = {
         }
     ],
     totalPrice: 0,
-    cartList: []
+    cartList: [],
+    historyList: []
 };
 
 const store = createStore(rootReducer, initialState);
