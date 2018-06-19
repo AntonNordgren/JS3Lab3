@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import './App.css';
 
-import WebStore from './components/WebStore.js';
+import React, { Component } from 'react';
+
+import Counter from './Counter.js';
 
 class App extends Component {
     render() {
         return (
             <div>
-                <WebStore />
+                <Counter />
             </div>
         );
     }
